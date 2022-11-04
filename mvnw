@@ -54,7 +54,7 @@ fi
 cygwin=false;
 darwin=false;
 mingw=false
-case "`uname`" in
+case "$(uname)" in
   CYGWIN*) cygwin=true ;;
   MINGW*) mingw=true;;
   Darwin*) darwin=true
@@ -62,7 +62,7 @@ case "`uname`" in
     # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
     if [ -z "$JAVA_HOME" ]; then
       if [ -x "/usr/libexec/java_home" ]; then
-        export JAVA_HOME="`/usr/libexec/java_home`"
+        export JAVA_HOME="$(/usr/libexec/java_home)"
       else
         export JAVA_HOME="/Library/Java/Home"
       fi
@@ -98,7 +98,8 @@ if [ -z "$M2_HOME" ] ; then
   # make it fully qualified
   M2_HOME=`cd "$M2_HOME" && pwd`
 
-  cd "$saveddir"
+
+  cd "$saveddir" || exit
   # echo Using m2 at $M2_HOME
 fi
 
