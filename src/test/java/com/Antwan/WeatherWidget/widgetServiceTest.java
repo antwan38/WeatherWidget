@@ -2,12 +2,14 @@ package com.Antwan.WeatherWidget;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 
 @SpringBootTest
-class WeatherWidgetApplicationTests {
+public class widgetServiceTest {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void GetWidget(){
 
+        Assert.isTrue(true);
+    }
 }
