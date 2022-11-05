@@ -10,11 +10,10 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.util.Assert;
 
 @DataJpaTest
-@TestPropertySource(locations = "classpath:test.properties")
+
 public class widgetServiceTest {
 
-    @Autowired
-    private TestEntityManager em;
+
     @Test
     void GetWidget(){
     }
