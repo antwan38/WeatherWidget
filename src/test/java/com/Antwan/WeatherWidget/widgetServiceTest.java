@@ -12,11 +12,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
 
-@RunWith(SpringRunner.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@TestPropertySource(locations = "classpath:test.properties")
+@TestPropertySource(locations = "classpath:test.properties")
 public class widgetServiceTest {
+@Autowired
+private TestEntityManager entityManager;
 
 
     @Test
