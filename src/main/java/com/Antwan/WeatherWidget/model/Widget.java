@@ -1,6 +1,7 @@
 package com.Antwan.WeatherWidget.model;
 
 
+import javax.persistence.Entity;
 
 
 public class Widget {
@@ -13,10 +14,6 @@ public class Widget {
     private Sys sys;
     private Coord coord;
 
-
-
-    public Widget() {
-    }
 
     public Coord getCoord() {
         return coord;

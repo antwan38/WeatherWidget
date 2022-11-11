@@ -1,8 +1,9 @@
 package com.Antwan.WeatherWidget.repository;
 
 import com.Antwan.WeatherWidget.model.Widget;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
-
+@Repository
 public class widgetDal implements widgetRepository{
 
     RestTemplate restTemplate = new RestTemplate();
