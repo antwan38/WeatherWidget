@@ -25,9 +25,11 @@ public class widgetController {
     }
 
     @PostMapping("/")
-    public Constable String (@RequestParam("location") String location, @RequestParam("grid") String grid){
-        WidgetData widgetData = new WidgetData(grid, location);
+    public Constable String (@RequestParam("location") String location, @RequestParam("column") int column, @RequestParam("row") int row){
+        WidgetData widgetData = new WidgetData(column, row, location);
         widgetservice.saveWidget(widgetData);
+        System.out.println(widgetData.getwRow());
+        System.out.println("hmmm");
         return "ok";
     }
 

@@ -8,8 +8,9 @@ public class WidgetData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    private int wColumn;
+    private int wRow;
 
-    private String grid;
     private String location;
 
     public Long getId() {
@@ -20,21 +21,30 @@ public class WidgetData {
         this.id = id;
     }
 
-    public WidgetData(String grid, String location) {
-        this.grid = grid;
+    public WidgetData(int column, int row, String location) {
+        this.wColumn = column;
         this.location = location;
+        this.wRow = row;
     }
 
     public WidgetData() {
 
     }
 
-    public String getGrid() {
-        return grid;
+    public int getwColumn() {
+        return wColumn;
     }
 
-    public void setGrid(String grid) {
-        this.grid = grid;
+    public void setwColumn(int wColumn) {
+        this.wColumn = wColumn;
+    }
+
+    public int getwRow() {
+        return wRow;
+    }
+
+    public void setwRow(int wRow) {
+        this.wRow = wRow;
     }
 
     public String getLocation() {
