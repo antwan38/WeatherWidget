@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.constant.Constable;
+import java.util.Map;
 
 @CrossOrigin("http://localhost:4200/")
 @RestController
@@ -23,13 +24,11 @@ public class widgetController {
     widgetController(widgetService widgetservice){
         this.widgetservice = widgetservice;
     }
-
+    //@RequestParam("location") String location, @RequestParam("column") int column, @RequestParam("row") int row,
     @PostMapping("/")
-    public Constable String (@RequestParam("location") String location, @RequestParam("column") int column, @RequestParam("row") int row){
-        WidgetData widgetData = new WidgetData(column, row, location);
+    public Constable String ( @RequestBody Map<String,String> widgetdataMap){
+        WidgetData widgetData = new WidgetData( Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
         widgetservice.saveWidget(widgetData);
-        System.out.println(widgetData.getwRow());
-        System.out.println("hmmm");
         return "ok";
     }
 
