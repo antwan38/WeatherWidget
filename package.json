@@ -4,7 +4,7 @@
   "description": "widgets with weather",
   "main": "index.js",
   "scripts": {
-    "test": "ng test"
+    "test": "npm start"
   },
   "repository": {
     "type": "git",
