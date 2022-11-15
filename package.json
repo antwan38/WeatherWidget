@@ -1,0 +1,23 @@
+{
+  "name": "weatherwidget",
+  "version": "1.0.0",
+  "description": "widgets with weather",
+  "main": "index.js",
+  "scripts": {
+    "test": "ng test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antwan38/WeatherWidget.git"
+  },
+  "keywords": [
+    "weather",
+    "widget"
+  ],
+  "author": "antwan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antwan38/WeatherWidget/issues"
+  },
+  "homepage": "https://github.com/antwan38/WeatherWidget#readme"
+}
