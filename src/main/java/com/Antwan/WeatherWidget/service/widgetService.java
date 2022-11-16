@@ -38,5 +38,9 @@ public class widgetService {
       return widgetRepository.findAll();
    }
 
+   public void deleteWidget(Long id){
+        widgetRepository.deleteById(id);
+   }
+
 
 }
