@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: antwangamen/clockbox:latest
+          tags: antwangamen/weatherwidget:latest
