@@ -35,3 +35,6 @@ COPY . /usr/app
 RUN npm install
 
 EXPOSE  3000
+CMD npm install
+CMD mvn package
+CMD mvn spring-boot:run
