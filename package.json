@@ -4,8 +4,7 @@
   "description": "widgets with weather",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "start": "start"
+    "test": "mvn spring-boot:run"
   },
   "repository": {
     "type": "git",
