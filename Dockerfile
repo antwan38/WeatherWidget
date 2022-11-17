@@ -36,6 +36,3 @@ RUN npm install
 
 EXPOSE  3000
 CMD ["node", "server.js"]
-CMD npm install
-CMD mvn package
-CMD mvn spring-boot:run
