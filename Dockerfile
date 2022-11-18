@@ -8,7 +8,6 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 RUN nvm install 10.15.3
-RUN nvm package
 
 COPY package.json package.json
 RUN npm install
@@ -18,5 +17,5 @@ COPY . /usr/src/app
 
 EXPOSE 8080
 CMD npm install
-CMD mvn package
+
 CMD mvn spring-boot:run
