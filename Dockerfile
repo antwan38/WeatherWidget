@@ -1,6 +1,6 @@
 FROM node:boron
+FROM tomcat:8.0
 
-RUN apt-get install..
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
