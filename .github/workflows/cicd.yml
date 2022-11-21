@@ -34,5 +34,3 @@ jobs:
         VALIDATE_DOCKERFILE_HADOLINT: false
         VALIDATE_GITHUB_ACTIONS: false
         OUTPUT_DETAILS: detailed
-    - name: lint strait
-      uses: checkstyle/checkstyle@checkstyle-10.4

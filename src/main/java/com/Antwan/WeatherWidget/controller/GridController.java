@@ -16,17 +16,19 @@ import java.util.Map;
 @RequestMapping("/grid")
 public class GridController {
     private final widgetService widgetservice;
-    GridController(final widgetService widgetservice){
+
+    GridController(final widgetService widgetservice) {
         this.widgetservice = widgetservice;
     }
+
     @GetMapping("/")
-    public List<WidgetData> getGrid(){
+    public List<WidgetData> getGrid() {
         return widgetservice.getGrid();
     }
 
     @DeleteMapping("/")
-    public void deleteGrid(@RequestBody Map<String,String> id){
+    public void deleteGrid(@RequestBody Map<String, String> id) {
         System.out.println(id);
-        widgetservice.deleteWidget((long)Integer.parseInt(id.get("id")));
+        widgetservice.deleteWidget((long) Integer.parseInt(id.get("id")));
     }
 }
