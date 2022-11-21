@@ -16,9 +16,9 @@ import java.util.Map;
 @RestController
 @CrossOrigin("http://localhost:4200/")
 @RequestMapping("/grid")
-public class gridController {
+public class GridController {
     private final widgetService widgetservice;
-    gridController(widgetService widgetservice){
+    GridController(widgetService widgetservice){
         this.widgetservice = widgetservice;
     }
     @GetMapping("/")
