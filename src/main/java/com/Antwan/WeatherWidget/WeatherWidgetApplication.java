@@ -8,9 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class WeatherWidgetApplication {
-	private WeatherWidgetApplication(){
 
-	}
 	public static void main(String[] args) {
 		SpringApplication.run(WeatherWidgetApplication.class, args);
 	}
