@@ -15,17 +15,25 @@ import java.util.Map;
 @CrossOrigin("http://localhost:4200/")
 @RequestMapping("/grid")
 public class GridController {
+    /**
+     * this is variable is the connection to the service.
+     */
     private final WidgetService widgetservice;
 
     GridController(final WidgetService widgetservice) {
         this.widgetservice = widgetservice;
     }
-
+    /**
+     * this is method is used to get all the grid data of a user.
+     */
     @GetMapping("/")
     public List<WidgetData> getGrid() {
         return widgetservice.getGrid();
     }
-
+    /**
+     * this is method is used to delete a specific widget,
+     * out of the grid of a user.
+     */
     @DeleteMapping("/")
     public void deleteGrid(@RequestBody final Map<String, String> id) {
         System.out.println(id);

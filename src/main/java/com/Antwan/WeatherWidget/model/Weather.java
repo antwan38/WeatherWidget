@@ -1,41 +1,68 @@
 package com.Antwan.WeatherWidget.model;
 
-public class Weather
-{
+public class Weather {
+    /**
+     * this variable is the id of the weather of the widget.
+     */
     private int id;
+    /**
+     * this variable contains the main info of the widget.
+     */
     private String main;
+    /**
+     * this variable is the description of the weather of the widget.
+     */
     private String description;
+    /**
+     * this variable is the icon name of the weather of the widget.
+     */
     private String icon;
-
+    /**
+     * this is method is used to access to variable of the model.
+     */
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
+    /**
+     * this is method is used to access to variable of the model.
+     */
+    public void setId(final int id) {
         this.id = id;
     }
-
+    /**
+     * this is method is used to access to variable of the model.
+     */
     public String getMain() {
         return main;
     }
-
-    public void setMain(String main) {
+    /**
+     * this is method is used to access to variable of the model.
+     */
+    public void setMain(final String main) {
         this.main = main;
     }
-
+    /**
+     * this is method is used to access to variable of the model.
+     */
     public String getDescription() {
         return description;
     }
-
-    public void setDescription(String description) {
+    /**
+     * this is method is used to access to variable of the model.
+     */
+    public void setDescription(final String description) {
         this.description = description;
     }
-
+    /**
+     * this is method is used to access to variable of the model.
+     */
     public String getIcon() {
         return icon;
     }
-
-    public void setIcon(String icon) {
+    /**
+     * this is method is used to access to variable of the model.
+     */
+    public void setIcon(final String icon) {
         this.icon = icon;
     }
 }

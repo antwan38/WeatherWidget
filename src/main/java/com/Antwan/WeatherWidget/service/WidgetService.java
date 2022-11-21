@@ -4,7 +4,7 @@ import com.Antwan.WeatherWidget.model.Widget;
 
 import com.Antwan.WeatherWidget.model.WidgetData;
 import com.Antwan.WeatherWidget.repository.WidgetDal;
-import com.Antwan.WeatherWidget.repository.widgetDataRepository;
+import com.Antwan.WeatherWidget.repository.WidgetDataRepository;
 
 import org.springframework.stereotype.Service;
 
@@ -15,9 +15,9 @@ import java.util.List;
 public class WidgetService {
 
     private WidgetDal widgetDal;
-    private widgetDataRepository widgetRepository;
+    private WidgetDataRepository widgetRepository;
 
-    WidgetService(WidgetDal widgetDal, widgetDataRepository widgetRepository) {
+    WidgetService(WidgetDal widgetDal, WidgetDataRepository widgetRepository) {
         this.widgetDal = widgetDal;
         this.widgetRepository = widgetRepository;
     }

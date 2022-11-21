@@ -17,22 +17,28 @@ import java.util.Map;
 @RestController
 @RequestMapping("/widget")
 public class WidgetController {
-
+    /**
+     * this is variable is the connection to the service.
+     */
     private final WidgetService widgetservice;
 
-    WidgetController(WidgetService widgetservice) {
+    WidgetController(final WidgetService widgetservice) {
         this.widgetservice = widgetservice;
     }
-
+    /**
+     * this is method creates a widget in the grid for a user.
+     */
     @PostMapping("/")
-    public Constable saveGridInfo(@RequestBody Map<String, String> widgetdataMap) {
+    public Constable saveGridInfo(@RequestBody final Map<String, String> widgetdataMap) {
         WidgetData widgetData = new WidgetData(Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
         widgetservice.saveWidget(widgetData);
         return "ok";
     }
-
+    /**
+     * this is method finds the data of a widget by using an external method.
+     */
     @GetMapping("/{location}")
-    public Widget findOne(@PathVariable String location) {
+    public Widget findOne(@PathVariable final String location) {
 
         return widgetservice.getWidget(location);
     }
