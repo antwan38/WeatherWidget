@@ -17,12 +17,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Lint Code Base
-      uses: github/super-linter@v4
-      env:
-        VALIDATE_ALL_CODEBASE: false
-        DEFAULT_BRANCH: master
-        DEFAULT_WORKSPACE: /WeatherWidget
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      
+  lint: 
+   runs-on: ubuntu-latest
+   steps:
+    - uses: actions/checkout@v3
+    - name: Lint Code Base
+      uses: github/super-linter@v4.9.7
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
