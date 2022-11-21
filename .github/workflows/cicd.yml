@@ -30,3 +30,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         VALIDATE_ARM: false
         VALIDATE_POWERSHELL: false
+        VALIDATE_BASH: false
+        VALIDATE_DOCKERFILE_HADOLINT: false
+        VALIDATE_GITHUB_ACTIONS: false
