@@ -5,5 +5,5 @@ import com.Antwan.WeatherWidget.model.Widget;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface widgetRepository {
-    public Widget GetWidget(String location);
+    public Widget getWidget(String location);
 }

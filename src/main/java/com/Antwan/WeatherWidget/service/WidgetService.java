@@ -3,9 +3,8 @@ package com.Antwan.WeatherWidget.service;
 import com.Antwan.WeatherWidget.model.Widget;
 
 import com.Antwan.WeatherWidget.model.WidgetData;
-import com.Antwan.WeatherWidget.repository.widgetDal;
+import com.Antwan.WeatherWidget.repository.WidgetDal;
 import com.Antwan.WeatherWidget.repository.widgetDataRepository;
-import com.Antwan.WeatherWidget.repository.widgetRepository;
 
 import org.springframework.stereotype.Service;
 
@@ -13,32 +12,33 @@ import java.util.List;
 
 
 @Service
-public class widgetService {
+public class WidgetService {
 
-    private widgetDal widgetDal;
+    private WidgetDal widgetDal;
     private widgetDataRepository widgetRepository;
-    widgetService(widgetDal widgetDal, widgetDataRepository widgetRepository){
+
+    WidgetService(WidgetDal widgetDal, widgetDataRepository widgetRepository) {
         this.widgetDal = widgetDal;
         this.widgetRepository = widgetRepository;
     }
 
-    public Widget GetWidget(String location){
-        Widget widget = widgetDal.GetWidget(location);
-        if (widget != null){
+    public Widget getWidget(String location) {
+        Widget widget = widgetDal.getWidget(location);
+        if (widget != null) {
             return  widget;
         }
         return null;
     }
 
-   public void saveWidget(WidgetData widgetData){
+   public void saveWidget(WidgetData widgetData) {
         widgetRepository.save(widgetData);
    }
 
-   public List<WidgetData> getGrid(){
+   public List<WidgetData> getGrid() {
       return widgetRepository.findAll();
    }
 
-   public void deleteWidget(Long id){
+   public void deleteWidget(Long id) {
         widgetRepository.deleteById(id);
    }
 

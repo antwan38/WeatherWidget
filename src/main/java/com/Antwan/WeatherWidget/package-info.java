@@ -1,5 +1,5 @@
 /**
- * This module is providing weather data
+ * This module is providing weather data.
  *
  * @since 1.0
  * @author Antwan

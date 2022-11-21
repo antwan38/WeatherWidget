@@ -1,5 +1,5 @@
 /**
- * This module is providing weather data to the frontend
+ * This module is providing weather data to the frontend.
  *
  * @since 1.0
  * @author Antwan

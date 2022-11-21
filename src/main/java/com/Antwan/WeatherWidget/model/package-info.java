@@ -1,5 +1,5 @@
 /**
- * This module is providing models for the backend
+ * This module is providing models for the backend.
  *
  * @since 1.0
  * @author Antwan

@@ -1,7 +1,7 @@
 package com.Antwan.WeatherWidget.controller;
 
 import com.Antwan.WeatherWidget.model.WidgetData;
-import com.Antwan.WeatherWidget.service.widgetService;
+import com.Antwan.WeatherWidget.service.WidgetService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +15,9 @@ import java.util.Map;
 @CrossOrigin("http://localhost:4200/")
 @RequestMapping("/grid")
 public class GridController {
-    private final widgetService widgetservice;
+    private final WidgetService widgetservice;
 
-    GridController(final widgetService widgetservice) {
+    GridController(final WidgetService widgetservice) {
         this.widgetservice = widgetservice;
     }
 
@@ -27,7 +27,7 @@ public class GridController {
     }
 
     @DeleteMapping("/")
-    public void deleteGrid(@RequestBody Map<String, String> id) {
+    public void deleteGrid(@RequestBody final Map<String, String> id) {
         System.out.println(id);
         widgetservice.deleteWidget((long) Integer.parseInt(id.get("id")));
     }

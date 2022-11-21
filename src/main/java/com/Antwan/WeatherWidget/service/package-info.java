@@ -1,5 +1,5 @@
 /**
- * This module is providing the proses power to compile all client request
+ * This module is providing the proses power to compile all client request.
  *
  * @since 1.0
  * @author Antwan
