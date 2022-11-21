@@ -33,3 +33,4 @@ jobs:
         VALIDATE_BASH: false
         VALIDATE_DOCKERFILE_HADOLINT: false
         VALIDATE_GITHUB_ACTIONS: false
+        OUTPUT_DETAILS: detailed
