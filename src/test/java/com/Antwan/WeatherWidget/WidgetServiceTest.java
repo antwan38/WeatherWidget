@@ -10,8 +10,7 @@ import org.springframework.test.context.TestPropertySource;
 @DataJpaTest
 @TestPropertySource(locations = "classpath:test.properties")
 public class WidgetServiceTest {
-@Autowired
-private TestEntityManager entityManager;
+
 
     /**
      * this is method is used to access to variable of the model.
