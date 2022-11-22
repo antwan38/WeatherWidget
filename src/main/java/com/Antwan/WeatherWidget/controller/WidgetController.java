@@ -27,6 +27,8 @@ public class WidgetController {
     }
     /**
      * this is method creates a widget in the grid for a user.
+     * @return html message
+     * @param widgetdataMap is the data to place the widget on the right place
      */
     @PostMapping("/")
     public Constable saveGridInfo(@RequestBody final Map<String, String> widgetdataMap) {
@@ -36,6 +38,8 @@ public class WidgetController {
     }
     /**
      * this is method finds the data of a widget by using an external method.
+     * @return widget
+     * @param location on the world
      */
     @GetMapping("/{location}")
     public Widget findOne(@PathVariable final String location) {

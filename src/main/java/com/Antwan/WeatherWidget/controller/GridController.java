@@ -24,7 +24,7 @@ public class GridController {
         this.widgetservice = widgetservice;
     }
     /**
-     * this method @return all the grid data of a user.
+     * @return all the grid data of a user.
      */
     @GetMapping("/")
     public List<WidgetData> getGrid() {
@@ -33,6 +33,7 @@ public class GridController {
     /**
      * this is method is used to delete a specific widget,
      * out of the grid of a user.
+     * @param id of grid widget
      */
     @DeleteMapping("/")
     public void deleteGrid(@RequestBody final Map<String, String> id) {
