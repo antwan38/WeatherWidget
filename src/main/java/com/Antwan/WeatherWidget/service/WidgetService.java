@@ -13,32 +13,54 @@ import java.util.List;
 
 @Service
 public class WidgetService {
-
+    /**
+     * this is variable is used to connected to the repository.
+     */
     private WidgetDal widgetDal;
+    /**
+     * this is variable is used to connected to the repository.
+     */
     private WidgetDataRepository widgetRepository;
-
-    WidgetService(WidgetDal widgetDal, WidgetDataRepository widgetRepository) {
+    /**
+     * this constructor is used to inizialize the widget service.
+     * @param widgetDal to connect to the repository
+     * @param widgetRepository to connect to the repository
+     */
+    WidgetService(final WidgetDal widgetDal, final WidgetDataRepository widgetRepository) {
         this.widgetDal = widgetDal;
         this.widgetRepository = widgetRepository;
     }
-
-    public Widget getWidget(String location) {
+    /**
+     * this is method is used to get the widget data from an external api.
+     * @return a widget
+     * @param location of a widget
+     */
+    public Widget getWidget(final String location) {
         Widget widget = widgetDal.getWidget(location);
         if (widget != null) {
             return  widget;
         }
         return null;
     }
-
-   public void saveWidget(WidgetData widgetData) {
+    /**
+     * this is method is used to save a widget in the database.
+     * @param widgetData
+     */
+   public void saveWidget(final WidgetData widgetData) {
         widgetRepository.save(widgetData);
    }
-
+    /**
+     * this is method is used to get the grid data of a user to place all the widgets in the right place.
+     * @return a list of widgets
+     */
    public List<WidgetData> getGrid() {
       return widgetRepository.findAll();
    }
-
-   public void deleteWidget(Long id) {
+    /**
+     * this is method is used to delete a widget out of the grid.
+     * @param id of a widget
+     */
+   public void deleteWidget(final Long id) {
         widgetRepository.deleteById(id);
    }
 
