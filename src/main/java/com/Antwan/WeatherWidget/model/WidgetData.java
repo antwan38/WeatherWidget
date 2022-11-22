@@ -27,6 +27,11 @@ public class WidgetData {
      * this variable is the real word location of the widget.
      */
     private String location;
+
+    public WidgetData() {
+
+    }
+
     /**
      * this is method is used to access to variable of the model.
      */
