@@ -1,11 +1,4 @@
-
-COPY package.json package.json
-RUN npm install
-
-# Bundle app source
-COPY . /usr/src/app
-
+FROM anapsix/alpine-java 
+COPY WeatherWidget-0.0.1-SNAPSHOT.jar /home/WeatherWidget-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
-CMD npm install
-
-CMD mvn spring-boot:run
+CMD ["java","-jar","/home/WeatherWidget-0.0.1-SNAPSHOT.jar"]
