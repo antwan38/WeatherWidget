@@ -1,4 +1,4 @@
 FROM anapsix/alpine-java 
-COPY WeatherWidget-0.0.1-SNAPSHOT.jar /target/WeatherWidget-0.0.1-SNAPSHOT.jar
+COPY . /usr/src/app
 EXPOSE 8080
-CMD ["java","-jar","/home/WeatherWidget-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-jar","/usr/src/app/target/WeatherWidget-0.0.1-SNAPSHOT.jar"]
