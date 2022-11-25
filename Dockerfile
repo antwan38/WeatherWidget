@@ -7,7 +7,6 @@ FROM openjdk:17-alpine
 
 COPY --from=maven-builder app/target/WeatherWidget-0.0.1-SNAPSHOT.jar /app-service/WeatherWidget-0.0.1-SNAPSHOT.jar
 WORKDIR /app-service
-ADD http://host.docker.internal:8000
 
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","WeatherWidget-0.0.1-SNAPSHOT.jar"]
