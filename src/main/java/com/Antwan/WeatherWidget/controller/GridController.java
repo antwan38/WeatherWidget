@@ -38,7 +38,7 @@ public class GridController {
     }
     /**
      * this is method is used to get a widget in the grid.
-     *
+     * @return widgetdata from the id
      * @param id of a widget
      */
     @GetMapping("/{id}")

@@ -44,10 +44,11 @@ public class WidgetController {
     /**
      * this is method edits the data of a widget.
      * @return message
+     * @param widgetdataMap info of widgetdata
      */
     @PutMapping ("/")
     public Constable editWidget(@RequestBody final Map<String, String> widgetdataMap) {
-        WidgetData widgetData = new WidgetData(Long.parseLong(widgetdataMap.get("id")) , Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
+        WidgetData widgetData = new WidgetData(Long.parseLong(widgetdataMap.get("id")), Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
         widgetservice.editWidget(widgetData);
         return "ok";
     }

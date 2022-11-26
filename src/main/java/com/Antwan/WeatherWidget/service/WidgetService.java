@@ -75,8 +75,9 @@ public class WidgetService {
     /**
      * this is method is used to get a widget in the grid.
      * @param id of a widget
+     * @return widgetdata from the id
      */
-   public Optional<WidgetData> getGridItem(final long id){
+   public Optional<WidgetData> getGridItem(final long id) {
        return widgetRepository.findById(id);
    }
 
