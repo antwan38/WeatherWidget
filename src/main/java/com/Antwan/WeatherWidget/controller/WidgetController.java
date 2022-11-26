@@ -3,13 +3,8 @@ package com.Antwan.WeatherWidget.controller;
 import com.Antwan.WeatherWidget.model.Widget;
 import com.Antwan.WeatherWidget.model.WidgetData;
 import com.Antwan.WeatherWidget.service.WidgetService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.lang.constant.Constable;
 import java.util.Map;
 
@@ -45,6 +40,16 @@ public class WidgetController {
     public Widget findOne(@PathVariable final String location) {
 
         return widgetservice.getWidget(location);
+    }
+    /**
+     * this is method edits the data of a widget.
+     * @return message
+     */
+    @PutMapping ("/")
+    public Constable editWidget(@RequestBody final Map<String, String> widgetdataMap) {
+        WidgetData widgetData = new WidgetData(Long.parseLong(widgetdataMap.get("id")) , Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
+        widgetservice.editWidget(widgetData);
+        return "ok";
     }
 
 }

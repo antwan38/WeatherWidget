@@ -9,6 +9,7 @@ import com.Antwan.WeatherWidget.repository.WidgetDataRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -62,6 +63,14 @@ public class WidgetService {
      */
    public void deleteWidget(final Long id) {
         widgetRepository.deleteById(id);
+   }
+    /**
+     * this is method is used to edit a widget in the grid.
+     * @param widgetData of a widget
+     */
+   public void editWidget(final WidgetData widgetData) {
+       widgetRepository.save(widgetData);
+
    }
 
 

@@ -60,6 +60,19 @@ public class WidgetData {
         this.location = location;
         this.wRow = row;
     }
+    /**
+     * this is constructor initializes a widget.
+     * @param column
+     * @param row
+     * @param location
+     * @param id
+     */
+    public WidgetData(final long id, final int column, final int row, final String location) {
+        this.wColumn = column;
+        this.location = location;
+        this.wRow = row;
+        this.id = id;
+    }
 
 
     /**
