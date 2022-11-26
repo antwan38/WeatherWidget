@@ -72,6 +72,13 @@ public class WidgetService {
        widgetRepository.save(widgetData);
 
    }
+    /**
+     * this is method is used to get a widget in the grid.
+     * @param id of a widget
+     */
+   public Optional<WidgetData> getGridItem(final long id){
+       return widgetRepository.findById(id);
+   }
 
 
 }
