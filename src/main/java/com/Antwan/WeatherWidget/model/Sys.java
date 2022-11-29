@@ -1,6 +1,7 @@
 package com.Antwan.WeatherWidget.model;
 
 public class Sys {
+
     /**
      * this variable is the country of the widget.
      */

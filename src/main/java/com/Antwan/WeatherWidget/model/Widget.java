@@ -33,6 +33,8 @@ public class Widget {
      */
     private Coord coord;
 
+
+
     /**
      * this is method is used to access to variable of the model.
      * @return the coord of the widget

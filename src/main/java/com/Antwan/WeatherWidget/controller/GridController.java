@@ -1,9 +1,12 @@
 package com.Antwan.WeatherWidget.controller;
 
+import com.Antwan.WeatherWidget.model.Widget;
 import com.Antwan.WeatherWidget.model.WidgetData;
+import com.Antwan.WeatherWidget.service.GridService;
 import com.Antwan.WeatherWidget.service.WidgetService;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.constant.Constable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -15,17 +18,18 @@ public class GridController {
     /**
      * this is variable is the connection to the service.
      */
-    private final WidgetService widgetservice;
+    private final GridService gridService;
 
-    GridController(final WidgetService widgetservice) {
-        this.widgetservice = widgetservice;
+
+    GridController(final GridService gridService) {
+        this.gridService = gridService;
     }
     /**
      * @return all the grid data of a user.
      */
     @GetMapping("/")
     public List<WidgetData> getGrid() {
-        return widgetservice.getGrid();
+        return gridService.getGrid();
     }
     /**
      * this is method is used to delete a specific widget,
@@ -34,7 +38,7 @@ public class GridController {
      */
     @DeleteMapping("/")
     public void deleteGrid(@RequestBody final Map<String, String> id) {
-        widgetservice.deleteWidget((long) Integer.parseInt(id.get("id")));
+        gridService.deleteWidget((long) Integer.parseInt(id.get("id")));
     }
     /**
      * this is method is used to get a widget in the grid.
@@ -43,6 +47,28 @@ public class GridController {
      */
     @GetMapping("/{id}")
     public Optional<WidgetData> getGridItem(@PathVariable final int id) {
-        return widgetservice.getGridItem(id);
+        return gridService.getGridItem(id);
+    }
+    /**
+     * this is method creates a widget in the grid for a user.
+     * @return html message
+     * @param widgetdataMap is the data to place the widget on the right place
+     */
+    @PostMapping("/")
+    public Constable saveGridInfo(@RequestBody final Map<String, String> widgetdataMap) {
+        WidgetData widgetData = new WidgetData(Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
+        gridService.saveWidget(widgetData);
+        return "ok";
+    }
+    /**
+     * this is method edits the data of a widget.
+     * @return message
+     * @param widgetdataMap info of widgetdata
+     */
+    @PutMapping ("/")
+    public Constable editWidget(@RequestBody final Map<String, String> widgetdataMap) {
+        WidgetData widgetData = new WidgetData(Long.parseLong(widgetdataMap.get("id")), Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
+        gridService.editWidget(widgetData);
+        return "ok";
     }
 }

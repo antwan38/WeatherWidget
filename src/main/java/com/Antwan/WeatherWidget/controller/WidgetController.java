@@ -21,17 +21,6 @@ public class WidgetController {
         this.widgetservice = widgetservice;
     }
     /**
-     * this is method creates a widget in the grid for a user.
-     * @return html message
-     * @param widgetdataMap is the data to place the widget on the right place
-     */
-    @PostMapping("/")
-    public Constable saveGridInfo(@RequestBody final Map<String, String> widgetdataMap) {
-        WidgetData widgetData = new WidgetData(Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
-        widgetservice.saveWidget(widgetData);
-        return "ok";
-    }
-    /**
      * this is method finds the data of a widget by using an external method.
      * @return widget
      * @param location on the world
@@ -40,17 +29,6 @@ public class WidgetController {
     public Widget findOne(@PathVariable final String location) {
 
         return widgetservice.getWidget(location);
-    }
-    /**
-     * this is method edits the data of a widget.
-     * @return message
-     * @param widgetdataMap info of widgetdata
-     */
-    @PutMapping ("/")
-    public Constable editWidget(@RequestBody final Map<String, String> widgetdataMap) {
-        WidgetData widgetData = new WidgetData(Long.parseLong(widgetdataMap.get("id")), Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
-        widgetservice.editWidget(widgetData);
-        return "ok";
     }
 
 }

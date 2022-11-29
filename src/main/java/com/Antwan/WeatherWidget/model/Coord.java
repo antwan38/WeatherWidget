@@ -1,6 +1,7 @@
 package com.Antwan.WeatherWidget.model;
 
 public class Coord {
+
     /**
      * this variable is the longitude of the widget.
      */
