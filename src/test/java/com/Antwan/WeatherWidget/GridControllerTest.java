@@ -44,7 +44,7 @@ public class GridControllerTest {
         Assertions.assertEquals("leo", gridController.getGrid().get(0).getLocation());
         Assertions.assertEquals(4, gridController.getGrid().get(0).getwRow());
         Assertions.assertEquals(2, gridController.getGrid().get(0).getwColumn());
-        gridController.
+        
     }
 
     @Test
@@ -70,7 +70,7 @@ public class GridControllerTest {
         List<WidgetData> widgetDataList = gridController.getGrid();
         int id = 1;
         for (WidgetData widgetDataFromDataBase: widgetDataList) {
-            
+
             Assertions.assertEquals(id, widgetDataFromDataBase.getId());
             id = 3;
         }
