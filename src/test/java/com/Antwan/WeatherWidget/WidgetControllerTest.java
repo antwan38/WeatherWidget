@@ -31,8 +31,8 @@ public class WidgetControllerTest {
 
         String location = "Limburg";
         String country = "NL";
-        Float lat = (float)51.25;
-        Float lon = (float)6.0;
+        Float lat = (float) 51.25;
+        Float lon = (float) 6.0;
         int id = 2751596;
 
 

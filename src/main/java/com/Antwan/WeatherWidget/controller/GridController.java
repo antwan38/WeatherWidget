@@ -1,9 +1,7 @@
 package com.Antwan.WeatherWidget.controller;
 
-import com.Antwan.WeatherWidget.model.Widget;
 import com.Antwan.WeatherWidget.model.WidgetData;
 import com.Antwan.WeatherWidget.service.GridService;
-import com.Antwan.WeatherWidget.service.WidgetService;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.constant.Constable;

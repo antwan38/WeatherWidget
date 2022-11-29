@@ -18,24 +18,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @TestPropertySource(locations = "classpath:test.properties")
 public class GridControllerTest {
-
+    /**
+     * this is variable is the connection to the service.
+     */
     @Autowired
     private GridController gridController;
-
-
     /**
-     * this is method is used to save a widget in the database.
+     * this is method is used to save a widget in the database as a test.
      */
     @Test
     public void saveGridInfo() throws Exception {
         // Arrange
-        WidgetData widgetData = new WidgetData(2,4,"leo");
+        WidgetData widgetData = new WidgetData(2, 4, "leo");
         assertThat(gridController).isNotNull();
-        Map<String,String> mapWidgetdata = new HashMap<>();
+        Map<String, String> mapWidgetdata = new HashMap<>();
         mapWidgetdata.put("column", String.valueOf(widgetData.getwColumn()));
         mapWidgetdata.put("row", String.valueOf(widgetData.getwRow()));
         mapWidgetdata.put("location", widgetData.getLocation());
-
         // Act
         gridController.saveGridInfo(mapWidgetdata);
 
@@ -44,13 +43,14 @@ public class GridControllerTest {
         Assertions.assertEquals("leo", gridController.getGrid().get(0).getLocation());
         Assertions.assertEquals(4, gridController.getGrid().get(0).getwRow());
         Assertions.assertEquals(2, gridController.getGrid().get(0).getwColumn());
-        
     }
-
+    /**
+     * this is method is used to delete a widget from the database as a test.
+     */
     @Test
     public void deleteGrid() throws Exception {
         // Arrange
-        WidgetData widgetData = new WidgetData(2,4,"leo");
+        WidgetData widgetData = new WidgetData(2, 4, "leo");
         assertThat(gridController).isNotNull();
         Map<String, String> mapWidgetdata = new HashMap<>();
         Map<String, String> mapId = new HashMap<>();
@@ -60,7 +60,7 @@ public class GridControllerTest {
         mapId.put("id", "2");
 
         // Act
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             gridController.saveGridInfo(mapWidgetdata);
         }
         gridController.deleteGrid(mapId);

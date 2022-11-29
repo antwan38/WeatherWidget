@@ -1,15 +1,8 @@
 package com.Antwan.WeatherWidget.service;
 
 import com.Antwan.WeatherWidget.model.Widget;
-
-import com.Antwan.WeatherWidget.model.WidgetData;
 import com.Antwan.WeatherWidget.repository.WidgetDal;
-import com.Antwan.WeatherWidget.repository.WidgetDataRepository;
-
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 
 @Service
