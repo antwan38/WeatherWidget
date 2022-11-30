@@ -4,14 +4,9 @@ import com.Antwan.WeatherWidget.controller.GridController;
 import com.Antwan.WeatherWidget.model.WidgetData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.lang.constant.Constable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
