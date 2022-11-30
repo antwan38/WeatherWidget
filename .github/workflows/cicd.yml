@@ -32,5 +32,6 @@ jobs:
         VALIDATE_POWERSHELL: false
         VALIDATE_BASH: false
         VALIDATE_DOCKERFILE_HADOLINT: false
+        VALIDATE_DOCKERFILE_JSCPD: false
         VALIDATE_GITHUB_ACTIONS: false
         OUTPUT_DETAILS: detailed
