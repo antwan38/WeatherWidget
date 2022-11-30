@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.lang.constant.Constable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,6 +77,31 @@ public class GridControllerTest {
             Assertions.assertEquals(id, widgetDataFromDataBase.getId());
             id = 3;
         }
+
+    }
+    /**
+     * this is method edits the data of a widget as a test.
+     */
+    @Test
+    public void editWidget() {
+        // Arrange
+        WidgetData widgetData = new WidgetData(3, 267, 423, "china");
+        assertThat(gridController).isNotNull();
+        Map<String, String> mapWidgetdata = new HashMap<>();
+        mapWidgetdata.put("column", String.valueOf(widgetData.getwColumn()));
+        mapWidgetdata.put("row", String.valueOf(widgetData.getwRow()));
+        mapWidgetdata.put("location", widgetData.getLocation());
+        mapWidgetdata.put("id", String.valueOf(widgetData.getId()));
+
+        // Act
+        // Assert
+        Assertions.assertEquals("leo", gridController.getGridItem(3).get().getLocation());
+        Assertions.assertEquals(4, gridController.getGridItem(3).get().getwRow());
+        Assertions.assertEquals(2, gridController.getGridItem(3).get().getwColumn());
+        gridController.editWidget(mapWidgetdata);
+        Assertions.assertEquals("china", gridController.getGridItem(3).get().getLocation());
+        Assertions.assertEquals(423, gridController.getGridItem(3).get().getwRow());
+        Assertions.assertEquals(267, gridController.getGridItem(3).get().getwColumn());
 
     }
 }
