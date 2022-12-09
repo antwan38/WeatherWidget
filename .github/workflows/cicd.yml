@@ -38,12 +38,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/maven@master
-        with:
-          command: monitor
-          args: --fail-on=all --project-path=/home/runner/work/WeatherWidget/WeatherWidget
+        uses: snyk/actions/python@master
         env:
-         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          COMMAND: "npm install"
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          with:
+            args: --file=setup.py
 
 
 
