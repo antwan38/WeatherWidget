@@ -41,6 +41,6 @@ jobs:
         uses: snyk/actions/maven@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          args: snyk test --all-projects --org=snyk-apps --severity-threshold=high --fail-on=all
+          args: snyk test --all-projects --org=snyk-apps --severity-threshold=high --fail-on=all --all-files
 
 
