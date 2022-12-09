@@ -41,7 +41,7 @@ jobs:
         uses: snyk/actions/maven@master
         with:
           command: test
-          args: --all-sub-projects --fail-on=all
+          args: --all-files --fail-on=all
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
