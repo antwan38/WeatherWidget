@@ -15,9 +15,9 @@ public class UserController {
         this.userService = userService;
     }
     @PostMapping("/")
-    public void socialLogin(@RequestBody Map<String, String> userData) {
+    public User socialLogin(@RequestBody Map<String, String> userData) {
         User user = new User(userData.get("name"), userData.get("email"));
-        userService.saveUser(user);
+        return userService.saveUser(user);
     }
 
     @GetMapping("/")
