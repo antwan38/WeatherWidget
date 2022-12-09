@@ -11,7 +11,7 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
-    public UserController(UserService userService){
+    public UserController(UserService userService) {
         this.userService = userService;
     }
     @PostMapping("/")
@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public User getUser(@RequestParam long id){
+    public User getUser(@RequestParam long id) {
        return userService.getUser(id);
     }
 }
