@@ -28,12 +28,8 @@ jobs:
       uses: github/super-linter/slim@v4.9.7
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VALIDATE_ARM: false
-        VALIDATE_POWERSHELL: false
-        VALIDATE_BASH: false
-        VALIDATE_DOCKERFILE_HADOLINT: false
-        VALIDATE_DOCKERFILE_JSCPD: false
-        VALIDATE_GITHUB_ACTIONS: false
+        VALIDATE_ALL_CODEBASE: false
+        VALIDATE_JAVA: true
         OUTPUT_DETAILS: detailed
         name: Example workflow for Python using Snyk
 
@@ -45,5 +41,4 @@ jobs:
         uses: snyk/actions/maven@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --severity-threshold=high
+
