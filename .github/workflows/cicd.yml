@@ -40,8 +40,8 @@ jobs:
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
         with:
-          command: test
-          args: --all-files --fail-on=all
+          command: monitor
+          args: --fail-on=all
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
