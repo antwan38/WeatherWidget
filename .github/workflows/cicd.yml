@@ -43,7 +43,7 @@ jobs:
           COMMAND: "npm install"
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           with:
-            args: --file=setup.py
+            args: --file=pom.xml
 
 
 
