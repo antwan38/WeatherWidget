@@ -39,9 +39,12 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
+        with:
+          command: test
+          args: --file=pom.xml
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-         args: snyk test --yarn-workspaces
+
 
 
 
