@@ -36,14 +36,12 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - name: Snyk
-        uses: snyk/actions@0.3.0
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/maven@master
+        uses: snyk/actions/node@master
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          args: snyk monitor --all-projects --org=snyk-apps --severity-threshold=high --fail-on=all --all-files
+         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
 
 
 
