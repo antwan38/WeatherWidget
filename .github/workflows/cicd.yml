@@ -41,7 +41,7 @@ jobs:
         uses: snyk/actions/maven@master
         with:
           command: monitor
-          args: --fail-on=all
+          args: --fail-on=all --project-path=/home/runner/work/WeatherWidget/WeatherWidget
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
