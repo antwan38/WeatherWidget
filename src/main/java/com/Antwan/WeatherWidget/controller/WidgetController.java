@@ -21,8 +21,8 @@ public class WidgetController {
      * @return widget
      * @param location on the world
      */
-    @GetMapping("/{location}")
-    public Widget findOne(@PathVariable final String location) {
+    @GetMapping("/")
+    public Widget findOne(@RequestParam("location") final String location) {
 
         return widgetservice.getWidget(location);
     }

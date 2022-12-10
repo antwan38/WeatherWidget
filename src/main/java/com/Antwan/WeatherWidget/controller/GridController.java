@@ -43,8 +43,8 @@ public class GridController {
      * @return widgetdata from the id
      * @param id of a widget
      */
-    @GetMapping("/{id}")
-    public Optional<WidgetData> getGridItem(@PathVariable final int id) {
+    @GetMapping("/info/")
+    public Optional<WidgetData> getGridItem(@RequestParam("id") final int id) {
         return gridService.getGridItem(id);
     }
     /**
