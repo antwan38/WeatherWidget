@@ -17,11 +17,16 @@ public class UserController {
     @PostMapping("/")
     public User socialLogin(@RequestBody Map<String, String> userData) {
         User user = new User(userData.get("name"), userData.get("email"));
-        return userService.saveUser(user);
+        if (userService.getUserByEmail(user.getEmail()) == null) {
+           return userService.saveUser(user);
+        }else{
+            return userService.getUserByEmail(user.getEmail());
+        }
+
     }
 
     @GetMapping("/")
-    public User getUser(@RequestParam long id) {
+    public User getUser(@RequestParam("id") long id) {
        return userService.getUser(id);
     }
 }
