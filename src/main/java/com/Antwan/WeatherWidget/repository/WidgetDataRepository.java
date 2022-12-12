@@ -14,5 +14,5 @@ public interface WidgetDataRepository extends JpaRepository<WidgetData, Long> {
      * this is method is used to get the grid data of a user to place all the widgets in the right place.
      * @return a list of widgets
      */
-    List<WidgetData> findAllByUserId(long id);
+    List<WidgetData> findAllByClientId(long id);
 }

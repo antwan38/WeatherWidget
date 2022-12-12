@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+public class Client {
     @Id
     @JsonIgnoreProperties("widgetData")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -16,17 +16,17 @@ public class User {
     private String name;
     private String email;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<WidgetData> widgetData;
 
-    public User(String name, String email) {
+    public Client(String name, String email) {
         this.name = name;
         this.email = email;
     }
-    public User() {
+    public Client() {
     }
 
-    public User(long id, String name, String email) {
+    public Client(long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;

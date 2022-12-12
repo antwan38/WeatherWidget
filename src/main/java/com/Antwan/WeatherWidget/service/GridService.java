@@ -31,7 +31,7 @@ public class GridService {
      * @return a list of widgets
      */
     public List<WidgetData> getGrid(long id) {
-        return widgetRepository.findAllByUserId(id);
+        return widgetRepository.findAllByClientId(id);
     }
     /**
      * this is method is used to delete a widget out of the grid.

@@ -1,9 +1,12 @@
 package com.Antwan.WeatherWidget;
 
+import com.Antwan.WeatherWidget.controller.ClientController;
 import com.Antwan.WeatherWidget.controller.GridController;
-import com.Antwan.WeatherWidget.model.User;
+import com.Antwan.WeatherWidget.model.Client;
 import com.Antwan.WeatherWidget.model.WidgetData;
+import com.Antwan.WeatherWidget.service.ClientService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,19 +25,30 @@ public class GridControllerTest {
      */
     @Autowired
     private GridController gridController;
+    @Autowired
+    private ClientController clientController;
+    private Client user;
     /**
      * this is method is used to save a widget in the database as a test.
      */
+
+
     @Test
     public void saveGridInfo() throws Exception {
+        // set up the client
+        this.user = new Client(1, "Antwan", "antwansittard@gmail.com");
+        Map<String, String> clientData = new HashMap<>();
+        clientData.put("name", user.getName());
+        clientData.put("email", user.getEmail());
+        clientController.socialLogin(clientData);
         // Arrange
-        User user = new User(1, "Antwan", "antwansittard@gmail.com");
         WidgetData widgetData = new WidgetData(2, 4, "leo", user);
         assertThat(gridController).isNotNull();
         Map<String, String> mapWidgetdata = new HashMap<>();
         mapWidgetdata.put("column", String.valueOf(widgetData.getwColumn()));
         mapWidgetdata.put("row", String.valueOf(widgetData.getwRow()));
         mapWidgetdata.put("location", widgetData.getLocation());
+        mapWidgetdata.put("clientId", String.valueOf(widgetData.getClient().getId()));
         // Act
         gridController.saveGridInfo(mapWidgetdata);
 
@@ -50,7 +64,7 @@ public class GridControllerTest {
     @Test
     public void deleteGrid() throws Exception {
         // Arrange
-        User user = new User(1, "Antwan", "antwansittard@gmail.com");
+        this.user = new Client(1, "Antwan", "antwansittard@gmail.com");
         WidgetData widgetData = new WidgetData(2, 4, "leo", user);
         assertThat(gridController).isNotNull();
         Map<String, String> mapWidgetdata = new HashMap<>();
@@ -58,6 +72,7 @@ public class GridControllerTest {
         mapWidgetdata.put("column", String.valueOf(widgetData.getwColumn()));
         mapWidgetdata.put("row", String.valueOf(widgetData.getwRow()));
         mapWidgetdata.put("location", widgetData.getLocation());
+        mapWidgetdata.put("clientId", String.valueOf(user.getId()));
         mapId.put("id", "2");
 
         // Act
@@ -69,11 +84,11 @@ public class GridControllerTest {
         // Assert
         Assertions.assertEquals(2, gridController.getGrid(1).size());
         List<WidgetData> widgetDataList = gridController.getGrid(1);
-        int id = 1;
+        int id = 3;
         for (WidgetData widgetDataFromDataBase: widgetDataList) {
 
             Assertions.assertEquals(id, widgetDataFromDataBase.getId());
-            id = 3;
+            id = 4;
         }
 
     }

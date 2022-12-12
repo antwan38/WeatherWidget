@@ -1,9 +1,9 @@
 package com.Antwan.WeatherWidget.controller;
 
-import com.Antwan.WeatherWidget.model.User;
+import com.Antwan.WeatherWidget.model.Client;
 import com.Antwan.WeatherWidget.model.WidgetData;
 import com.Antwan.WeatherWidget.service.GridService;
-import com.Antwan.WeatherWidget.service.UserService;
+import com.Antwan.WeatherWidget.service.ClientService;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.constant.Constable;
@@ -19,11 +19,11 @@ public class GridController {
      * this is variable is the connection to the service.
      */
     private final GridService gridService;
-    private final UserService userService;
+    private final ClientService clientService;
 
 
-    GridController(final GridService gridService, final UserService userService) {
-        this.userService = userService;
+    GridController(final GridService gridService, final ClientService clientService) {
+        this.clientService = clientService;
         this.gridService = gridService;
     }
     /**
@@ -58,8 +58,8 @@ public class GridController {
      */
     @PostMapping("/")
     public Constable saveGridInfo(@RequestBody final Map<String, String> widgetdataMap) {
-        User user = userService.getUser(Long.parseLong(widgetdataMap.get("userId")));
-        WidgetData widgetData = new WidgetData(Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"), user);
+        Client client = clientService.getClient(Long.parseLong(widgetdataMap.get("clientId")));
+        WidgetData widgetData = new WidgetData(Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"), client);
         gridService.saveWidget(widgetData);
         return "ok";
     }

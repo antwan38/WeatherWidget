@@ -3,7 +3,7 @@ package com.Antwan.WeatherWidget.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-@JsonIgnoreProperties("user")
+@JsonIgnoreProperties("client")
 @Entity
 public class WidgetData {
     /**
@@ -27,15 +27,15 @@ public class WidgetData {
     private String location;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    public User getUser() {
-        return user;
+    public Client getClient() {
+        return client;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     /**
@@ -66,11 +66,11 @@ public class WidgetData {
      * @param row
      * @param location
      */
-    public WidgetData(final int column, final int row, final String location, final User user) {
+    public WidgetData(final int column, final int row, final String location, final Client client) {
         this.wColumn = column;
         this.location = location;
         this.wRow = row;
-        this.user = user;
+        this.client = client;
     }
     /**
      * this is constructor initializes a widget.
