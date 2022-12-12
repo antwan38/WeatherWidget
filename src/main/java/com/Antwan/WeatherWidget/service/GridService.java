@@ -30,8 +30,8 @@ public class GridService {
      * this is method is used to get the grid data of a user to place all the widgets in the right place.
      * @return a list of widgets
      */
-    public List<WidgetData> getGrid() {
-        return widgetRepository.findAll();
+    public List<WidgetData> getGrid(long id) {
+        return widgetRepository.findAllByUserId(id);
     }
     /**
      * this is method is used to delete a widget out of the grid.

@@ -1,11 +1,9 @@
 package com.Antwan.WeatherWidget.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
+@JsonIgnoreProperties("user")
 @Entity
 public class WidgetData {
     /**
@@ -27,6 +25,19 @@ public class WidgetData {
      * this variable is the real word location of the widget.
      */
     private String location;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     /**
      * this constructor initializes the widgetdata.
      */
@@ -55,10 +66,11 @@ public class WidgetData {
      * @param row
      * @param location
      */
-    public WidgetData(final int column, final int row, final String location) {
+    public WidgetData(final int column, final int row, final String location, final User user) {
         this.wColumn = column;
         this.location = location;
         this.wRow = row;
+        this.user = user;
     }
     /**
      * this is constructor initializes a widget.

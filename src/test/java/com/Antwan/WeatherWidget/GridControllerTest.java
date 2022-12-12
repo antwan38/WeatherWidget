@@ -1,6 +1,7 @@
 package com.Antwan.WeatherWidget;
 
 import com.Antwan.WeatherWidget.controller.GridController;
+import com.Antwan.WeatherWidget.model.User;
 import com.Antwan.WeatherWidget.model.WidgetData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,8 @@ public class GridControllerTest {
     @Test
     public void saveGridInfo() throws Exception {
         // Arrange
-        WidgetData widgetData = new WidgetData(2, 4, "leo");
+        User user = new User(1, "Antwan", "antwansittard@gmail.com");
+        WidgetData widgetData = new WidgetData(2, 4, "leo", user);
         assertThat(gridController).isNotNull();
         Map<String, String> mapWidgetdata = new HashMap<>();
         mapWidgetdata.put("column", String.valueOf(widgetData.getwColumn()));
@@ -37,10 +39,10 @@ public class GridControllerTest {
         gridController.saveGridInfo(mapWidgetdata);
 
         // Assert
-        Assertions.assertEquals(1, gridController.getGrid().size());
-        Assertions.assertEquals("leo", gridController.getGrid().get(0).getLocation());
-        Assertions.assertEquals(4, gridController.getGrid().get(0).getwRow());
-        Assertions.assertEquals(2, gridController.getGrid().get(0).getwColumn());
+        Assertions.assertEquals(1, gridController.getGrid(1).size());
+        Assertions.assertEquals("leo", gridController.getGrid(1).get(0).getLocation());
+        Assertions.assertEquals(4, gridController.getGrid(1).get(0).getwRow());
+        Assertions.assertEquals(2, gridController.getGrid(1).get(0).getwColumn());
     }
     /**
      * this is method is used to delete a widget from the database as a test.
@@ -48,7 +50,8 @@ public class GridControllerTest {
     @Test
     public void deleteGrid() throws Exception {
         // Arrange
-        WidgetData widgetData = new WidgetData(2, 4, "leo");
+        User user = new User(1, "Antwan", "antwansittard@gmail.com");
+        WidgetData widgetData = new WidgetData(2, 4, "leo", user);
         assertThat(gridController).isNotNull();
         Map<String, String> mapWidgetdata = new HashMap<>();
         Map<String, String> mapId = new HashMap<>();
@@ -64,8 +67,8 @@ public class GridControllerTest {
         gridController.deleteGrid(mapId);
 
         // Assert
-        Assertions.assertEquals(2, gridController.getGrid().size());
-        List<WidgetData> widgetDataList = gridController.getGrid();
+        Assertions.assertEquals(2, gridController.getGrid(1).size());
+        List<WidgetData> widgetDataList = gridController.getGrid(1);
         int id = 1;
         for (WidgetData widgetDataFromDataBase: widgetDataList) {
 

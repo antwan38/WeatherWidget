@@ -1,7 +1,9 @@
 package com.Antwan.WeatherWidget.controller;
 
+import com.Antwan.WeatherWidget.model.User;
 import com.Antwan.WeatherWidget.model.WidgetData;
 import com.Antwan.WeatherWidget.service.GridService;
+import com.Antwan.WeatherWidget.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.constant.Constable;
@@ -17,17 +19,19 @@ public class GridController {
      * this is variable is the connection to the service.
      */
     private final GridService gridService;
+    private final UserService userService;
 
 
-    GridController(final GridService gridService) {
+    GridController(final GridService gridService, final UserService userService) {
+        this.userService = userService;
         this.gridService = gridService;
     }
     /**
      * @return all the grid data of a user.
      */
     @GetMapping("/")
-    public List<WidgetData> getGrid() {
-        return gridService.getGrid();
+    public List<WidgetData> getGrid(@RequestParam("id") final long id) {
+        return gridService.getGrid(id);
     }
     /**
      * this is method is used to delete a specific widget,
@@ -54,7 +58,8 @@ public class GridController {
      */
     @PostMapping("/")
     public Constable saveGridInfo(@RequestBody final Map<String, String> widgetdataMap) {
-        WidgetData widgetData = new WidgetData(Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
+        User user = userService.getUser(Long.parseLong(widgetdataMap.get("userId")));
+        WidgetData widgetData = new WidgetData(Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"), user);
         gridService.saveWidget(widgetData);
         return "ok";
     }
