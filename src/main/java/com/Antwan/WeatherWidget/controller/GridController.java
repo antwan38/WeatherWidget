@@ -70,7 +70,8 @@ public class GridController {
      */
     @PutMapping ("/")
     public Constable editWidget(@RequestBody final Map<String, String> widgetdataMap) {
-        WidgetData widgetData = new WidgetData(Long.parseLong(widgetdataMap.get("id")), Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"));
+        Client client = clientService.getClient(Long.parseLong(widgetdataMap.get("clientId")));
+        WidgetData widgetData = new WidgetData(Long.parseLong(widgetdataMap.get("id")), Integer.parseInt(widgetdataMap.get("column")), Integer.parseInt(widgetdataMap.get("row")), widgetdataMap.get("location"), client);
         gridService.editWidget(widgetData);
         return "ok";
     }

@@ -79,11 +79,12 @@ public class WidgetData {
      * @param location
      * @param id
      */
-    public WidgetData(final long id, final int column, final int row, final String location) {
+    public WidgetData(final long id, final int column, final int row, final String location, final Client client) {
         this.wColumn = column;
         this.location = location;
         this.wRow = row;
         this.id = id;
+        this.client = client;
     }
 
 

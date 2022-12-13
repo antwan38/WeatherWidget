@@ -96,7 +96,8 @@ public class GridControllerTest {
     @Test
     public void editWidget() {
         // Arrange
-        WidgetData widgetData = new WidgetData(3, 267, 423, "china");
+        this.user = new Client(1, "Antwan", "antwansittard@gmail.com");
+        WidgetData widgetData = new WidgetData(3, 267, 423, "china", user);
         assertThat(gridController).isNotNull();
         Map<String, String> mapWidgetdata = new HashMap<>();
         mapWidgetdata.put("column", String.valueOf(widgetData.getwColumn()));
