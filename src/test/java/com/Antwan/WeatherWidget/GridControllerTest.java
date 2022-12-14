@@ -104,6 +104,7 @@ public class GridControllerTest {
         mapWidgetdata.put("row", String.valueOf(widgetData.getwRow()));
         mapWidgetdata.put("location", widgetData.getLocation());
         mapWidgetdata.put("id", String.valueOf(widgetData.getId()));
+        mapWidgetdata.put("clientId", String.valueOf(user.getId()));
 
         // Act
         // Assert
