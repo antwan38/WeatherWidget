@@ -27,6 +27,10 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v3
+        run: |
+          mvn install:install-file -DgroupId="com.socialinfogetter" -DartifactId=SocialInfoGetter -Dversion=0 -Dpackaging=jar -Dfile="src/main/resources/SocialInfoGetter-0.jar"
+          mvn idea:idea
+          mvn -B package --file pom.xml
         with:
           context: .
           file: ./Dockerfile
