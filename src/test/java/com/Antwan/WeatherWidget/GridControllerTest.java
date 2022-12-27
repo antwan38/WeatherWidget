@@ -4,14 +4,23 @@ import com.Antwan.WeatherWidget.controller.ClientController;
 import com.Antwan.WeatherWidget.controller.GridController;
 import com.Antwan.WeatherWidget.model.Client;
 import com.Antwan.WeatherWidget.model.WidgetData;
+import com.Antwan.WeatherWidget.repository.ClientRepository;
+import com.Antwan.WeatherWidget.service.ClientService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.test.context.TestPropertySource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,7 +33,7 @@ public class GridControllerTest {
     @Autowired
     private GridController gridController;
     @Autowired
-    private ClientController clientController;
+    private ClientService clientService;
     private Client user;
     /**
      * this is method is used to save a widget in the database as a test.
@@ -35,10 +44,9 @@ public class GridControllerTest {
     public void saveGridInfo() throws Exception {
         // set up the client
         this.user = new Client(1, "Antwan", "antwansittard@gmail.com");
-        Map<String, String> clientData = new HashMap<>();
-        clientData.put("name", user.getName());
-        clientData.put("email", user.getEmail());
-        clientController.socialLogin(clientData);
+
+        clientService.saveClient(user);
+
         // Arrange
         WidgetData widgetData = new WidgetData(2, 4, "leo", user);
         assertThat(gridController).isNotNull();
