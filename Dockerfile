@@ -2,6 +2,8 @@ FROM maven:3.8.4-openjdk-17 as maven-builder
 COPY src /app/src
 COPY pom.xml /app
 
+RUN mvn install:install-file -DgroupId="com.socialinfogetter" -DartifactId=SocialInfoGetter -Dversion=0 -Dpackaging=jar -Dfile="src/main/resources/SocialInfoGetter-0.jar"
+RUN mvn idea:idea
 RUN mvn -f /app/pom.xml clean package -DskipTests
 FROM openjdk:17-slim-bullseye
 
