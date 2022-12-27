@@ -29,8 +29,6 @@
 			<groupId>com.socialinfogetter</groupId>
 			<artifactId>SocialInfoGetter</artifactId>
 			<version>0</version>
-
-
 		</dependency>
 
 		<dependency>
@@ -69,11 +67,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>SocialInfoGetter</groupId>
-			<artifactId>com.SocialInfoGetter.SocialInfoGetter</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
