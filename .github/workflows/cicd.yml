@@ -19,7 +19,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: |
-        mvn install:install-file -DgroupId="com.socialinfogetter" -DartifactId=SocialInfoGetter -Dversion=0 -Dpackaging=jar -Dfile="C:\Users\Antwa\.m2\repository\com\SocialInfoGetter\SocialInfoGetter\0.0.1-SNAPSHOT\SocialInfoGetterLib.jar"
+        mvn install:install-file -DgroupId="com.socialinfogetter" -DartifactId=SocialInfoGetter -Dversion=0 -Dpackaging=jar -Dfile="src/main/resources/SocialInfoGetter-0.jar"
         mvn idea:idea
         mvn -B package --file pom.xml
 
