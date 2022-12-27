@@ -19,11 +19,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: |
-        mvn idea:idea
-        mvn install
-        mvn -B package --file pom.xml
+        mvn --batch-mode --update-snapshots package
+  
+  
 
-      
   lint: 
    runs-on: ubuntu-latest
    steps:
