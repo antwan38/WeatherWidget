@@ -27,12 +27,15 @@ public class WebsocketServer {
     @OnMessage
     public void onMessage(Session session, String message) {
         System.out.println("Received message from client: " + message);
-        Thread thread = new Thread(new EventHandler(message, session));
-        thread.start();
         for (ModelThreads thread1 : threads) {
             if (thread1.getSessionID().equals(session.getId())) {
-                thread1.addThread(thread);
-                System.out.println(session.getId() + "new thread added" + thread1.getThreads().size());
+                if (!checkIfThreadAlreadyExist(message, session)) {
+                    Thread thread = new Thread(new EventHandler(message, session));
+                    thread.start();
+                    thread1.addThread(thread);
+                    thread1.addLocations(message);
+                    System.out.println(session.getId() + "new thread added" + thread1.getThreads().size());
+                }
             }
         }
     }
@@ -57,9 +60,32 @@ public class WebsocketServer {
     @OnError
     public void onError(Session session, Throwable throwable) {
         sessions.remove(session);
+        for (ModelThreads thread : threads) {
+            if (thread.getSessionID().equals(session.getId())) {
+                if (thread.killAllThreads()) {
+                    threads.remove(thread);
+                }
+
+            }
+        }
         System.out.println("WebSocket error: " + throwable);
     }
 
+    private Boolean checkIfThreadAlreadyExist(String location, Session session) {
+        for (ModelThreads thread : threads) {
+            if (thread.getSessionID().equals(session.getId())) {
+                if (thread.getLocations() != null) {
+                    for (String location1 : thread.getLocations()) {
+                        if (location1.equals(location)) {
+                            System.out.println("thread" + location + "already exist");
+                            return true;
+                        }
+                    }
+                }
 
+            }
+        }
+        return false;
+    }
 
 }

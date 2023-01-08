@@ -1,15 +1,15 @@
 package com.Antwan.WeatherWidget.model;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ModelThreads {
     private Set<Thread> threads = Collections.synchronizedSet(new HashSet<>());
+    private List<String> locations;
     private String sessionID;
 
     public ModelThreads(String sessionID) {
         this.sessionID = sessionID;
+        this.locations = new ArrayList<>();
     }
 
     public String getSessionID() {
@@ -36,7 +36,12 @@ public class ModelThreads {
         return threads;
     }
 
-    public void setThreads(Set<Thread> threads) {
-        this.threads = threads;
+
+    public List<String> getLocations() {
+        return locations;
+    }
+
+    public void addLocations(String location) {
+        this.locations.add(location);
     }
 }

@@ -18,19 +18,22 @@ public class EventHandler implements Runnable {
         this.widgetDal = new WidgetDal();
         this.location = location;
         this.session = session;
+
     }
 
     @Override
     public void run() {
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             try {
                 Thread.sleep(100000);
                 this.widget = widgetDal.getWidget(location);
-                this.session.getAsyncRemote().sendText("Update:"+ widget.getName() + " " + widget.getMain().getTemp());
-                System.out.println("Update:"+ widget.getName() + " " + widget.getMain().getTemp());
+                this.session.getAsyncRemote().sendText("{ \"location\" : "+"\"" + widget.getName()+ "\"" + ", \"temp\" : " + widget.getMain().getTemp() + " }");
+                System.out.println("{ \"location\" : "+"\"" + widget.getName()+ "\"" + ", \"temp\" : " + widget.getMain().getTemp() + " }");
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
+        System.out.println("thread stopped");
     }
+
 }
