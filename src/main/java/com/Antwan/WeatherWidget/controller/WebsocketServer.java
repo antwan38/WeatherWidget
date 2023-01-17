@@ -11,23 +11,23 @@ import java.util.Set;
 
 @ServerEndpoint(value = "/websocket")
 public class WebsocketServer {
-    private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<>());
-    private static final Set<ModelThreads> threads = Collections.synchronizedSet(new HashSet<>());
+    private static final Set<Session> SESSIONS = Collections.synchronizedSet(new HashSet<>());
+    private static final Set<ModelThreads> THREADS = Collections.synchronizedSet(new HashSet<>());
 
 
     @OnOpen
     public void onOpen(Session session) {
-        sessions.add(session);
+        SESSIONS.add(session);
         System.out.println("WebSocket connection opened: " + session.getId());
         ModelThreads thread = new ModelThreads(session.getId());
-        threads.add(thread);
-        System.out.println(sessions.size());
+        THREADS.add(thread);
+        System.out.println(SESSIONS.size());
     }
 
     @OnMessage
     public void onMessage(Session session, String message) {
         System.out.println("Received message from client: " + message);
-        for (ModelThreads thread1 : threads) {
+        for (ModelThreads thread1 : THREADS) {
             if (thread1.getSessionID().equals(session.getId())) {
                 if (!checkIfThreadAlreadyExist(message, session)) {
                     Thread thread = new Thread(new EventHandler(message, session));
@@ -43,13 +43,13 @@ public class WebsocketServer {
 
     @OnClose
     public void onClose(Session session) {
-        sessions.remove(session);
+        SESSIONS.remove(session);
         System.out.println("WebSocket connection closed: " + session.getId());
-        for (ModelThreads thread : threads) {
+        for (ModelThreads thread : THREADS) {
             if (thread.getSessionID().equals(session.getId())) {
                 System.out.println(session.getId() + "thread removed" + thread.getThreads().size());
                 if (thread.killAllThreads()) {
-                    threads.remove(thread);
+                    THREADS.remove(thread);
                     System.out.println("thread removed");
                 }
 
@@ -59,11 +59,11 @@ public class WebsocketServer {
 
     @OnError
     public void onError(Session session, Throwable throwable) {
-        sessions.remove(session);
-        for (ModelThreads thread : threads) {
+        SESSIONS.remove(session);
+        for (ModelThreads thread : THREADS) {
             if (thread.getSessionID().equals(session.getId())) {
                 if (thread.killAllThreads()) {
-                    threads.remove(thread);
+                    THREADS.remove(thread);
                 }
 
             }
@@ -72,7 +72,7 @@ public class WebsocketServer {
     }
 
     private Boolean checkIfThreadAlreadyExist(String location, Session session) {
-        for (ModelThreads thread : threads) {
+        for (ModelThreads thread : THREADS) {
             if (thread.getSessionID().equals(session.getId())) {
                 if (thread.getLocations() != null) {
                     for (String location1 : thread.getLocations()) {

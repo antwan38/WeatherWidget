@@ -3,9 +3,6 @@ package com.Antwan.WeatherWidget.service;
 
 import com.Antwan.WeatherWidget.model.Widget;
 import com.Antwan.WeatherWidget.repository.WidgetDal;
-import com.microsoft.signalr.HubConnection;
-import com.microsoft.signalr.HubConnectionBuilder;
-
 import javax.websocket.Session;
 
 public class EventHandler implements Runnable {
@@ -27,8 +24,8 @@ public class EventHandler implements Runnable {
             try {
                 Thread.sleep(100000);
                 this.widget = widgetDal.getWidget(location);
-                this.session.getAsyncRemote().sendText("{ \"location\" : "+"\"" + widget.getName()+ "\"" + ", \"temp\" : " + widget.getMain().getTemp() + " }");
-                System.out.println("{ \"location\" : "+"\"" + widget.getName()+ "\"" + ", \"temp\" : " + widget.getMain().getTemp() + " }");
+                this.session.getAsyncRemote().sendText("{ \"location\" : " + "\"" + widget.getName() + "\"" + ", \"temp\" : " + widget.getMain().getTemp() + " }");
+                System.out.println("{ \"location\" : " + "\"" + widget.getName() + "\"" + ", \"temp\" : " + widget.getMain().getTemp() + " }");
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
