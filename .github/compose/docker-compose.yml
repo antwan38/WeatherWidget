@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:5.7
+    ports:
+      - "33061:3306"
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: weathersystem
+      MYSQL_USER: WeatherSystem
+      MYSQL_PASSWORD: WeatherSystem38
+  accountSysteem:
+    image: antwangamen/accountsystem:v0.1.0
+    ports:
+      - "8081:8081"
+  weatherWidgetFrontend:
+    image: antwangamen/weatherwidgetfrontend:v0.4.1
+    ports:
+      - "5001:80"
+  weatherWidget:
+    image: antwangamen/weatherwidget:v.0.4.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+
+
